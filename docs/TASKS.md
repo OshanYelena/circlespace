@@ -1,0 +1,25 @@
+# Development tasks
+
+- [x] **T01 — Repository and architecture foundation**
+  - Define modular-monolith boundaries and engineering conventions.
+  - Add environment template and common developer commands.
+- [ ] **T02 — Backend foundation and identity**
+  - Configure FastAPI, settings, persistence, security, auth, and profiles.
+  - Add migrations and identity tests.
+- [ ] **T03 — Friendship module**
+  - Implement friend-request and friendship CRUD workflows.
+  - Enforce state transitions and authorization.
+- [ ] **T04 — Social content module**
+  - Implement post, comment, like, share, and feed APIs.
+  - Cover ownership and idempotency rules with tests.
+- [ ] **T05 — Next.js application shell and authentication**
+  - Add design system, typed API client, auth state, and auth screens.
+- [ ] **T06 — Social experience**
+  - Build feed, composer, engagement, profiles, and friend management UI.
+- [ ] **T07 — Quality and GitHub review pipeline**
+  - Add backend/frontend test suites, CI, ownership, PR template, and dependency updates.
+  - Document branch-protection settings and review policy.
+- [ ] **T08 — Delivery and operations**
+  - Add containerized local stack, health checks, seed data, and runbook.
+  - Complete end-to-end verification and project documentation.
+

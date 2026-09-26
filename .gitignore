@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.next/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# Environment and local data
+.env
+!.env.example
+*.db
+*.sqlite3
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+
+# Test/build output
+coverage/
+htmlcov/
+dist/
+build/
+
