@@ -14,7 +14,7 @@
   - Cover ownership and idempotency rules with tests.
 - [x] **T05 — Next.js application shell and authentication**
   - Add design system, typed API client, auth state, and auth screens.
-- [ ] **T06 — Social experience**
+- [x] **T06 — Social experience**
   - Build feed, composer, engagement, profiles, and friend management UI.
 - [ ] **T07 — Quality and GitHub review pipeline**
   - Add backend/frontend test suites, CI, ownership, PR template, and dependency updates.

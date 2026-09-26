@@ -43,6 +43,8 @@ export const api = {
     request<Post[]>(`/posts/users/${username}`, {}, token),
   createPost: (token: string, body: { content: string; image_url?: string }) =>
     request<Post>("/posts", { method: "POST", body: JSON.stringify(body) }, token),
+  updatePost: (token: string, postId: number, body: { content: string }) =>
+    request<Post>(`/posts/${postId}`, { method: "PATCH", body: JSON.stringify(body) }, token),
   deletePost: (token: string, postId: number) =>
     request<void>(`/posts/${postId}`, { method: "DELETE" }, token),
   like: (token: string, postId: number, active: boolean) =>
@@ -78,5 +80,6 @@ export const api = {
       { method: "PATCH", body: JSON.stringify({ action }) },
       token,
     ),
+  removeFriend: (token: string, friendId: number) =>
+    request<void>(`/friendships/${friendId}`, { method: "DELETE" }, token),
 };
-
