@@ -6,7 +6,7 @@
 - [x] **T02 — Backend foundation and identity**
   - Configure FastAPI, settings, persistence, security, auth, and profiles.
   - Add migrations and identity tests.
-- [ ] **T03 — Friendship module**
+- [x] **T03 — Friendship module**
   - Implement friend-request and friendship CRUD workflows.
   - Enforce state transitions and authorization.
 - [ ] **T04 — Social content module**
