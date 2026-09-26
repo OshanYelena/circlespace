@@ -1,4 +1,4 @@
-.PHONY: api-install api-dev api-test api-lint web-install web-dev web-test web-lint architecture check
+.PHONY: api-install api-dev api-test api-lint api-migrate api-seed web-install web-dev web-test web-lint architecture check up
 
 api-install:
 	python3 -m venv .venv
@@ -13,6 +13,12 @@ api-test:
 api-lint:
 	.venv/bin/ruff check apps/api
 	.venv/bin/ruff format --check apps/api
+
+api-migrate:
+	cd apps/api && ../../.venv/bin/alembic upgrade head
+
+api-seed:
+	cd apps/api && ../../.venv/bin/python -m app.seed
 
 web-install:
 	npm --prefix apps/web install
@@ -31,3 +37,6 @@ architecture:
 	python3 scripts/check_architecture.py
 
 check: architecture api-lint api-test web-lint web-test
+
+up:
+	docker compose up --build

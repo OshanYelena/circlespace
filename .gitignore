@@ -24,6 +24,7 @@ __pycache__/
 
 # Test/build output
 coverage/
+.coverage
 htmlcov/
 dist/
 build/

@@ -1,16 +1,17 @@
 from functools import lru_cache
+from typing import Annotated
 
 from pydantic import field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     app_name: str = "CircleSpace API"
     api_v1_prefix: str = "/api/v1"
     database_url: str = "sqlite:///./social.db"
-    secret_key: str = "development-secret-change-me"
+    secret_key: str = "development-secret-change-me-at-least-32-bytes"
     access_token_expire_minutes: int = 1_440
-    backend_cors_origins: list[str] = ["http://localhost:3000"]
+    backend_cors_origins: Annotated[list[str], NoDecode] = ["http://localhost:3000"]
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

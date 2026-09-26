@@ -14,19 +14,43 @@ def upgrade() -> None:
     op.create_table(
         "friend_requests",
         sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("requester_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE")),
-        sa.Column("recipient_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE")),
+        sa.Column(
+            "requester_id",
+            sa.Integer(),
+            sa.ForeignKey("users.id", ondelete="CASCADE"),
+            nullable=False,
+        ),
+        sa.Column(
+            "recipient_id",
+            sa.Integer(),
+            sa.ForeignKey("users.id", ondelete="CASCADE"),
+            nullable=False,
+        ),
         sa.Column("status", request_status, nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
+        sa.Column(
+            "created_at", sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
+        ),
         sa.Column("responded_at", sa.DateTime(timezone=True), nullable=True),
         sa.CheckConstraint("requester_id != recipient_id", name="ck_friend_request_not_self"),
     )
     op.create_table(
         "friendships",
         sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("user_low_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE")),
-        sa.Column("user_high_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE")),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
+        sa.Column(
+            "user_low_id",
+            sa.Integer(),
+            sa.ForeignKey("users.id", ondelete="CASCADE"),
+            nullable=False,
+        ),
+        sa.Column(
+            "user_high_id",
+            sa.Integer(),
+            sa.ForeignKey("users.id", ondelete="CASCADE"),
+            nullable=False,
+        ),
+        sa.Column(
+            "created_at", sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
+        ),
         sa.CheckConstraint("user_low_id < user_high_id", name="ck_friendship_canonical_order"),
         sa.UniqueConstraint("user_low_id", "user_high_id", name="uq_friendship_pair"),
     )

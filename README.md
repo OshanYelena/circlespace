@@ -43,7 +43,8 @@ Run all local quality checks with:
 make check
 ```
 
+For a one-command PostgreSQL-backed environment, run `docker compose up --build`. See [docs/RUNBOOK.md](docs/RUNBOOK.md) for seeding, migrations, health checks, and production guidance.
+
 ## Delivery workflow
 
 Work is tracked in [docs/TASKS.md](docs/TASKS.md). Each completed task is represented by a focused Git commit. Pull requests must pass the checks defined in `.github/workflows/ci.yml` and follow the review guidance in `CONTRIBUTING.md`.
-

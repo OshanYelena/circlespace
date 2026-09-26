@@ -13,37 +13,69 @@ def upgrade() -> None:
     op.create_table(
         "posts",
         sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("author_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE")),
+        sa.Column(
+            "author_id",
+            sa.Integer(),
+            sa.ForeignKey("users.id", ondelete="CASCADE"),
+            nullable=False,
+        ),
         sa.Column("content", sa.Text(), nullable=False),
         sa.Column("image_url", sa.String(500), nullable=True),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
-        sa.Column("updated_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
+        sa.Column(
+            "created_at", sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
+        ),
+        sa.Column(
+            "updated_at", sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
+        ),
     )
     op.create_index("ix_posts_author_id", "posts", ["author_id"])
     op.create_table(
         "comments",
         sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("post_id", sa.Integer(), sa.ForeignKey("posts.id", ondelete="CASCADE")),
-        sa.Column("author_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE")),
+        sa.Column(
+            "post_id", sa.Integer(), sa.ForeignKey("posts.id", ondelete="CASCADE"), nullable=False
+        ),
+        sa.Column(
+            "author_id",
+            sa.Integer(),
+            sa.ForeignKey("users.id", ondelete="CASCADE"),
+            nullable=False,
+        ),
         sa.Column("content", sa.Text(), nullable=False),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
-        sa.Column("updated_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
+        sa.Column(
+            "created_at", sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
+        ),
+        sa.Column(
+            "updated_at", sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
+        ),
     )
     op.create_index("ix_comments_post_id", "comments", ["post_id"])
     op.create_table(
         "likes",
         sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("post_id", sa.Integer(), sa.ForeignKey("posts.id", ondelete="CASCADE")),
-        sa.Column("user_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE")),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
+        sa.Column(
+            "post_id", sa.Integer(), sa.ForeignKey("posts.id", ondelete="CASCADE"), nullable=False
+        ),
+        sa.Column(
+            "user_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+        ),
+        sa.Column(
+            "created_at", sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
+        ),
         sa.UniqueConstraint("post_id", "user_id", name="uq_like_post_user"),
     )
     op.create_table(
         "shares",
         sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("post_id", sa.Integer(), sa.ForeignKey("posts.id", ondelete="CASCADE")),
-        sa.Column("user_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE")),
-        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
+        sa.Column(
+            "post_id", sa.Integer(), sa.ForeignKey("posts.id", ondelete="CASCADE"), nullable=False
+        ),
+        sa.Column(
+            "user_id", sa.Integer(), sa.ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+        ),
+        sa.Column(
+            "created_at", sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
+        ),
         sa.UniqueConstraint("post_id", "user_id", name="uq_share_post_user"),
     )
 

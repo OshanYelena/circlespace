@@ -19,6 +19,6 @@
 - [x] **T07 — Quality and GitHub review pipeline**
   - Add backend/frontend test suites, CI, ownership, PR template, and dependency updates.
   - Document branch-protection settings and review policy.
-- [ ] **T08 — Delivery and operations**
+- [x] **T08 — Delivery and operations**
   - Add containerized local stack, health checks, seed data, and runbook.
   - Complete end-to-end verification and project documentation.
