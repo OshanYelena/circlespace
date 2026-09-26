@@ -12,7 +12,7 @@
 - [x] **T04 — Social content module**
   - Implement post, comment, like, share, and feed APIs.
   - Cover ownership and idempotency rules with tests.
-- [ ] **T05 — Next.js application shell and authentication**
+- [x] **T05 — Next.js application shell and authentication**
   - Add design system, typed API client, auth state, and auth screens.
 - [ ] **T06 — Social experience**
   - Build feed, composer, engagement, profiles, and friend management UI.
