@@ -3,7 +3,7 @@
 - [x] **T01 — Repository and architecture foundation**
   - Define modular-monolith boundaries and engineering conventions.
   - Add environment template and common developer commands.
-- [ ] **T02 — Backend foundation and identity**
+- [x] **T02 — Backend foundation and identity**
   - Configure FastAPI, settings, persistence, security, auth, and profiles.
   - Add migrations and identity tests.
 - [ ] **T03 — Friendship module**
@@ -22,4 +22,3 @@
 - [ ] **T08 — Delivery and operations**
   - Add containerized local stack, health checks, seed data, and runbook.
   - Complete end-to-end verification and project documentation.
-
