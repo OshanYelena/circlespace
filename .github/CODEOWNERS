@@ -1,0 +1,10 @@
+# Default review owner
+* @OshanYelena
+
+# Capability boundaries
+/apps/api/app/core/ @OshanYelena
+/apps/api/app/db/ @OshanYelena
+/apps/api/app/modules/ @OshanYelena
+/apps/web/src/lib/ @OshanYelena
+/.github/ @OshanYelena
+

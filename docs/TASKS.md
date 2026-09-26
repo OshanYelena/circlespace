@@ -16,7 +16,7 @@
   - Add design system, typed API client, auth state, and auth screens.
 - [x] **T06 — Social experience**
   - Build feed, composer, engagement, profiles, and friend management UI.
-- [ ] **T07 — Quality and GitHub review pipeline**
+- [x] **T07 — Quality and GitHub review pipeline**
   - Add backend/frontend test suites, CI, ownership, PR template, and dependency updates.
   - Document branch-protection settings and review policy.
 - [ ] **T08 — Delivery and operations**

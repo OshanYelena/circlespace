@@ -1,4 +1,4 @@
-.PHONY: api-install api-dev api-test api-lint web-install web-dev web-test web-lint check
+.PHONY: api-install api-dev api-test api-lint web-install web-dev web-test web-lint architecture check
 
 api-install:
 	python3 -m venv .venv
@@ -27,5 +27,7 @@ web-lint:
 	npm --prefix apps/web run lint
 	npm --prefix apps/web run typecheck
 
-check: api-lint api-test web-lint web-test
+architecture:
+	python3 scripts/check_architecture.py
 
+check: architecture api-lint api-test web-lint web-test

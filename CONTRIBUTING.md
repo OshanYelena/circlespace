@@ -8,6 +8,8 @@
 4. Run `make check` before opening a pull request.
 5. Complete the pull request checklist and request at least one review.
 
+The required checks and reviewer expectations are documented in [docs/CODE_REVIEW.md](docs/CODE_REVIEW.md).
+
 ## Architecture rules
 
 - Backend modules may use shared infrastructure from `app.core` and `app.db`.
@@ -26,4 +28,3 @@
 - Loading, empty, and error states are handled in the UI.
 - Tests cover the happy path and meaningful failure paths.
 - No secrets, credentials, or personal data are committed.
-
