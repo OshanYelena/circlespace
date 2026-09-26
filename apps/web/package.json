@@ -12,18 +12,18 @@
     "test": "node --experimental-strip-types --test src/**/*.test.ts"
   },
   "dependencies": {
-    "lucide-react": "^0.544.0",
+    "lucide-react": "^1.47.0",
     "next": "16.3.6",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@babel/types": "^7.29.8",
-    "@types/node": "^24.5.2",
+    "@babel/types": "^8.0.6",
+    "@types/node": "^26.6.2",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
-    "eslint": "^9.36.0",
+    "eslint": "^10.11.0",
     "eslint-config-next": "16.3.6",
-    "typescript": "5.9.3"
+    "typescript": "7.0.2"
   }
 }
