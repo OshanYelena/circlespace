@@ -9,7 +9,7 @@
 - [x] **T03 — Friendship module**
   - Implement friend-request and friendship CRUD workflows.
   - Enforce state transitions and authorization.
-- [ ] **T04 — Social content module**
+- [x] **T04 — Social content module**
   - Implement post, comment, like, share, and feed APIs.
   - Cover ownership and idempotency rules with tests.
 - [ ] **T05 — Next.js application shell and authentication**

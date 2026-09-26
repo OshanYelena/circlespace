@@ -9,6 +9,7 @@ from app.core.config import get_settings
 from app.db.base import Base
 from app.db.session import engine
 from app.modules.friendships import models as friendship_models  # noqa: F401
+from app.modules.posts import models as post_models  # noqa: F401
 from app.modules.users import models as user_models  # noqa: F401
 
 settings = get_settings()
