@@ -22,3 +22,6 @@
 - [x] **T08 — Delivery and operations**
   - Add containerized local stack, health checks, seed data, and runbook.
   - Complete end-to-end verification and project documentation.
+- [x] **T09 — Nginx Compose entry point**
+  - Run PostgreSQL, FastAPI, Next.js, and Nginx as a health-gated Compose stack.
+  - Publish only Nginx and preserve request correlation across the proxy.

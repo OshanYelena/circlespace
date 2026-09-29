@@ -2,11 +2,15 @@
 
 ## Local container stack
 
-Start PostgreSQL, the API, and the web app:
+Start PostgreSQL, the API, the web app, and Nginx:
 
 ```bash
 docker compose up --build
 ```
+
+The application is available through Nginx at `http://localhost:8080`. Copy
+`.env.compose.example` to `.env` before startup to override credentials, the
+published port, pool settings, or browser-facing API URL.
 
 Migrations run automatically before the API starts. Seed optional demo data after the API is healthy:
 
@@ -18,11 +22,18 @@ Sign in as `ada` or `grace` with password `demo-password`. Stop the stack with `
 
 ## Health and diagnostics
 
-- API health: `GET http://localhost:8000/health`
-- API documentation: `http://localhost:8000/docs`
-- Web application: `http://localhost:3000`
+- Nginx health: `GET http://localhost:8080/nginx-health`
+- API health: `GET http://localhost:8080/health`
+- API documentation: `http://localhost:8080/docs`
+- Web application: `http://localhost:8080`
 - Service status: `docker compose ps`
-- Service logs: `docker compose logs api` or `docker compose logs web`
+- Service logs: `docker compose logs api`, `docker compose logs web`, or
+  `docker compose logs nginx`
+
+Only Nginx is published to the host. PostgreSQL, FastAPI, and Next.js remain on
+the private Compose network. Stop the stack without deleting data using
+`docker compose down`. To deliberately remove the PostgreSQL volume too, use
+`docker compose down --volumes`.
 
 ## Database migrations
 
@@ -50,4 +61,3 @@ Review generated migrations for destructive changes and always implement `downgr
 ## Rollback
 
 Roll back application containers to the previous immutable image. Roll back a migration only after confirming the previous application version is compatible and the migration downgrade is non-destructive. Restore the database from backup for destructive data changes.
-

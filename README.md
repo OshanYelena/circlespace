@@ -43,7 +43,10 @@ Run all local quality checks with:
 make check
 ```
 
-For a one-command PostgreSQL-backed environment, run `docker compose up --build`. See [docs/RUNBOOK.md](docs/RUNBOOK.md) for seeding, migrations, health checks, and production guidance.
+For a one-command PostgreSQL-backed environment with Nginx, run
+`docker compose up --build`, then open `http://localhost:8080`. See
+[docs/RUNBOOK.md](docs/RUNBOOK.md) for configuration, seeding, migrations,
+health checks, and production guidance.
 
 ## Scaling lab
 

@@ -15,9 +15,11 @@ __pycache__/
 .env
 .env.lab
 .env.nginx
+.env.compose
 !.env.example
 !.env.lab.example
 !.env.nginx.example
+!.env.compose.example
 *.db
 *.sqlite3
 

@@ -1,46 +1,100 @@
+name: circlespace
+
 services:
   db:
     image: postgres:18.6-alpine
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: circlespace
-      POSTGRES_USER: circlespace
-      POSTGRES_PASSWORD: circlespace-local
+      POSTGRES_DB: ${POSTGRES_DB:-circlespace}
+      POSTGRES_USER: ${POSTGRES_USER:-circlespace}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-circlespace-local}
     volumes:
       - postgres_data:/var/lib/postgresql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U circlespace -d circlespace"]
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
       interval: 5s
       timeout: 3s
-      retries: 10
+      retries: 20
+      start_period: 5s
 
   api:
-    build: ./apps/api
+    build:
+      context: ./apps/api
+    restart: unless-stopped
     environment:
-      DATABASE_URL: postgresql+psycopg://circlespace:circlespace-local@db:5432/circlespace
-      SECRET_KEY: local-compose-secret-change-before-production
-      BACKEND_CORS_ORIGINS: http://localhost:3000
-    ports:
-      - "8000:8000"
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-circlespace}:${POSTGRES_PASSWORD:-circlespace-local}@db:5432/${POSTGRES_DB:-circlespace}
+      SECRET_KEY: ${SECRET_KEY:-local-compose-secret-change-before-production}
+      BACKEND_CORS_ORIGINS: ${BACKEND_CORS_ORIGINS:-http://localhost:8080}
+      DB_POOL_SIZE: ${DB_POOL_SIZE:-10}
+      DB_MAX_OVERFLOW: ${DB_MAX_OVERFLOW:-20}
+      DB_POOL_TIMEOUT_SECONDS: ${DB_POOL_TIMEOUT_SECONDS:-30}
+    expose:
+      - "8000"
     depends_on:
       db:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready')
       interval: 10s
-      timeout: 3s
-      retries: 5
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
   web:
     build:
       context: ./apps/web
       args:
-        NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
-    ports:
-      - "3000:3000"
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080/api/v1}
+    restart: unless-stopped
+    expose:
+      - "3000"
     depends_on:
       api:
         condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --no-verbose
+        - --tries=1
+        - --spider
+        - http://127.0.0.1:3000/
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  nginx:
+    image: nginx:1.31.6-alpine
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
+    volumes:
+      - ./ops/nginx/docker.conf:/etc/nginx/nginx.conf:ro
+      - ./ops/nginx/proxy_params:/etc/nginx/proxy_params:ro
+    depends_on:
+      api:
+        condition: service_healthy
+      web:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --no-verbose
+        - --tries=1
+        - --spider
+        - http://127.0.0.1/nginx-health
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
 
 volumes:
   postgres_data:
-
