@@ -54,6 +54,7 @@ def serialize_post(post: Post, viewer_id: int) -> PostRead:
 def create_post(db: Session, user: User, data: PostCreate) -> PostRead:
     post = Post(
         author_id=user.id,
+        title=data.content.strip().splitlines()[0][:200],
         content=data.content,
         image_url=str(data.image_url) if data.image_url else None,
     )

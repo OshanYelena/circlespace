@@ -11,6 +11,9 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./social.db"
     secret_key: str = "development-secret-change-me-at-least-32-bytes"
     access_token_expire_minutes: int = 1_440
+    db_pool_size: int = 10
+    db_max_overflow: int = 20
+    db_pool_timeout_seconds: int = 30
     backend_cors_origins: Annotated[list[str], NoDecode] = ["http://localhost:3000"]
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")

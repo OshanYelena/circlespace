@@ -11,6 +11,7 @@ MODULES = ROOT / "apps" / "api" / "app" / "modules"
 WEB = ROOT / "apps" / "web" / "src"
 
 ALLOWED_DEPENDENCIES = {
+    "articles": {"auth", "posts", "users"},
     "auth": {"users"},
     "users": {"auth"},
     "friendships": {"auth", "users"},
@@ -35,7 +36,9 @@ def backend_violations() -> list[str]:
                 target = imported_module(node)
                 if target and target != source and target not in allowed:
                     relative = path.relative_to(ROOT)
-                    errors.append(f"{relative}:{node.lineno}: {source} may not import {target}")
+                    errors.append(
+                        f"{relative}:{node.lineno}: {source} may not import {target}"
+                    )
     return errors
 
 
@@ -48,7 +51,9 @@ def frontend_violations() -> list[str]:
         for line_number, line in enumerate(path.read_text().splitlines(), 1):
             if "fetch(" in line:
                 relative = path.relative_to(ROOT)
-                errors.append(f"{relative}:{line_number}: HTTP calls belong in src/lib/api.ts")
+                errors.append(
+                    f"{relative}:{line_number}: HTTP calls belong in src/lib/api.ts"
+                )
     return errors
 
 
