@@ -52,6 +52,12 @@ Phases 2–17 remain `BACKLOG`. They will be expanded only when Phase 1 identifi
 | --- | --- | --- | --- |
 | PREP-001 | DONE | Install and configure native Nginx as a local reverse proxy. | Syntax check, proxy health check, API routing check, and [`NGINX_REVERSE_PROXY.md`](scaling/NGINX_REVERSE_PROXY.md). |
 
+## Dataset catalog
+
+| ID | Status | Task | Exit evidence |
+| --- | --- | --- | --- |
+| DATA-001 | DONE | Create deterministic Dataset D1 with realistic activity and hot-content skew. | All nine table targets and benchmark login passed; 2.532-second generation and 21 MB database recorded in [`DATASET_D1.md`](scaling/DATASET_D1.md). |
+
 Prepared infrastructure is not evidence of completing a scaling phase. Phase 1
 load tests continue to target FastAPI directly on port 8000 until a recorded
 experiment explicitly changes that single variable.
@@ -65,3 +71,4 @@ experiment explicitly changes that single variable.
 | 2026-09-29 | Preserve the existing social UI while measuring a small article API. | This minimizes unrelated product work and keeps the experimental surface controlled. |
 | 2026-09-29 | Keep Phase 1 open after the 10-VU runs. | These runs validate the harness but do not establish saturation or sustainable throughput. |
 | 2026-09-29 | Prepare Nginx without adding it to the Phase 1 data path. | The user requested the proxy setup, while the master plan requires evidence before adopting later-stage scaling infrastructure. |
+| 2026-09-29 | Define Dataset D1 with seed 42 and explicit destructive-reset confirmation. | This provides a larger repeatable benchmark shape while protecting non-local and production-looking databases. |

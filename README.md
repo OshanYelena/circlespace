@@ -52,6 +52,9 @@ health checks, and production guidance.
 
 The scaling experiment follows [scaling_lab_master_plan.md](scaling_lab_master_plan.md). Its live status is tracked separately in [docs/SCALING_LAB_BACKLOG.md](docs/SCALING_LAB_BACKLOG.md).
 
+The repeatable 107,000-row benchmark dataset is documented in
+[docs/scaling/DATASET_D1.md](docs/scaling/DATASET_D1.md).
+
 For the native, non-Docker Phase 0/1 environment, see [docs/scaling/PHASE_0_ENVIRONMENT.md](docs/scaling/PHASE_0_ENVIRONMENT.md). No distributed scaling component may be introduced until the current phase produces evidence for it.
 
 A native Nginx reverse proxy can be prepared with `make nginx-test` and started

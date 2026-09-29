@@ -1,4 +1,4 @@
-.PHONY: api-install api-dev api-test api-lint api-migrate api-seed web-install web-dev web-test web-lint architecture check up down compose-config compose-logs compose-ps lab-migrate lab-seed lab-reset-seed lab-api lab-run nginx-prepare nginx-test nginx-start nginx-stop nginx-reload nginx-status nginx-api nginx-web
+.PHONY: api-install api-dev api-test api-lint api-migrate api-seed web-install web-dev web-test web-lint architecture check up down compose-config compose-logs compose-ps benchmark-seed-d1 benchmark-verify-d1 lab-migrate lab-seed lab-reset-seed lab-api lab-run nginx-prepare nginx-test nginx-start nginx-stop nginx-reload nginx-status nginx-api nginx-web
 
 LAB_DATABASE_URL ?= postgresql+psycopg://localhost/circlespace_lab
 LAB_RESULT_DIR ?= docs/scaling/results/manual-run
@@ -102,3 +102,9 @@ compose-logs:
 
 compose-ps:
 	docker compose ps
+
+benchmark-seed-d1:
+	docker compose exec api python -m app.benchmark_seed --confirm-reset-d1
+
+benchmark-verify-d1:
+	docker compose exec api python -m app.benchmark_seed --verify-only
