@@ -51,6 +51,12 @@ The scaling experiment follows [scaling_lab_master_plan.md](scaling_lab_master_p
 
 For the native, non-Docker Phase 0/1 environment, see [docs/scaling/PHASE_0_ENVIRONMENT.md](docs/scaling/PHASE_0_ENVIRONMENT.md). No distributed scaling component may be introduced until the current phase produces evidence for it.
 
+A native Nginx reverse proxy can be prepared with `make nginx-test` and started
+with `make nginx-start`. See
+[docs/scaling/NGINX_REVERSE_PROXY.md](docs/scaling/NGINX_REVERSE_PROXY.md).
+It is prepared infrastructure and is excluded from Phase 1 measurements until
+the experiment backlog authorizes it.
+
 ## Delivery workflow
 
 Work is tracked in [docs/TASKS.md](docs/TASKS.md). Each completed task is represented by a focused Git commit. Pull requests must pass the checks defined in `.github/workflows/ci.yml` and follow the review guidance in `CONTRIBUTING.md`.

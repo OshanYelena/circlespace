@@ -46,6 +46,16 @@ This is the authoritative task and status ledger for the scaling experiment. Pro
 
 Phases 2–17 remain `BACKLOG`. They will be expanded only when Phase 1 identifies the first measured bottleneck. No caching, queues, replicas, partitioning, sharding, service extraction, autoscaling, or multi-region work is authorized by this backlog yet.
 
+## Prepared infrastructure — excluded from current baseline
+
+| ID | Status | Task | Exit evidence |
+| --- | --- | --- | --- |
+| PREP-001 | DONE | Install and configure native Nginx as a local reverse proxy. | Syntax check, proxy health check, API routing check, and [`NGINX_REVERSE_PROXY.md`](scaling/NGINX_REVERSE_PROXY.md). |
+
+Prepared infrastructure is not evidence of completing a scaling phase. Phase 1
+load tests continue to target FastAPI directly on port 8000 until a recorded
+experiment explicitly changes that single variable.
+
 ## Decision log
 
 | Date | Decision | Reason |
@@ -54,3 +64,4 @@ Phases 2–17 remain `BACKLOG`. They will be expanded only when Phase 1 identifi
 | 2026-09-29 | Use Locust for load generation. | It integrates with the existing Python toolchain and supports reproducible workload profiles and CSV output. |
 | 2026-09-29 | Preserve the existing social UI while measuring a small article API. | This minimizes unrelated product work and keeps the experimental surface controlled. |
 | 2026-09-29 | Keep Phase 1 open after the 10-VU runs. | These runs validate the harness but do not establish saturation or sustainable throughput. |
+| 2026-09-29 | Prepare Nginx without adding it to the Phase 1 data path. | The user requested the proxy setup, while the master plan requires evidence before adopting later-stage scaling infrastructure. |
