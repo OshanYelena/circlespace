@@ -1,0 +1,10 @@
+{
+  "users": 100,
+  "articles": 1000,
+  "likes": 5215,
+  "comments": 2579,
+  "negative_view_counts": 0,
+  "duplicate_likes": 0,
+  "orphan_comments": 0,
+  "passed": true
+}

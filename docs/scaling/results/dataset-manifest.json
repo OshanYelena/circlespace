@@ -1,0 +1,12 @@
+{
+  "seed": 20260929,
+  "users": 100,
+  "articles": 1000,
+  "likes": 5000,
+  "comments": 2000,
+  "article_id_min": 1,
+  "article_id_max": 1000,
+  "generation_seconds": 0.172,
+  "lab_username": "lab_user_0000000",
+  "lab_password": "lab-password"
+}

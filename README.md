@@ -45,6 +45,12 @@ make check
 
 For a one-command PostgreSQL-backed environment, run `docker compose up --build`. See [docs/RUNBOOK.md](docs/RUNBOOK.md) for seeding, migrations, health checks, and production guidance.
 
+## Scaling lab
+
+The scaling experiment follows [scaling_lab_master_plan.md](scaling_lab_master_plan.md). Its live status is tracked separately in [docs/SCALING_LAB_BACKLOG.md](docs/SCALING_LAB_BACKLOG.md).
+
+For the native, non-Docker Phase 0/1 environment, see [docs/scaling/PHASE_0_ENVIRONMENT.md](docs/scaling/PHASE_0_ENVIRONMENT.md). No distributed scaling component may be introduced until the current phase produces evidence for it.
+
 ## Delivery workflow
 
 Work is tracked in [docs/TASKS.md](docs/TASKS.md). Each completed task is represented by a focused Git commit. Pull requests must pass the checks defined in `.github/workflows/ci.yml` and follow the review guidance in `CONTRIBUTING.md`.

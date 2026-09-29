@@ -13,7 +13,9 @@ __pycache__/
 
 # Environment and local data
 .env
+.env.lab
 !.env.example
+!.env.lab.example
 *.db
 *.sqlite3
 
@@ -28,3 +30,8 @@ coverage/
 htmlcov/
 dist/
 build/
+
+# Superseded local scaling-lab smoke run (the validated EXP-000 run is versioned)
+docs/scaling/results/EXP-000-phase0-smoke/
+docs/scaling/results/**/locust.log
+docs/scaling/results/**/locust_*.csv

@@ -1,0 +1,33 @@
+{
+  "provisional": true,
+  "sample_count": 15,
+  "sample_duration_seconds": 14.264681,
+  "host_cpu_average_percent": 27.81333333333333,
+  "host_cpu_max_percent": 37.4,
+  "api_cpu_average_percent": 55.82146595496944,
+  "api_rss_max_bytes": 417775616.0,
+  "postgres_rss_max_bytes": 172294144,
+  "db_active_connections_max": 2.0,
+  "db_waiting_connections_max": 1.0,
+  "db_ungranted_locks_max": 0.0,
+  "locust": {
+    "requests": 2249,
+    "failures": 0,
+    "failure_ratio": 0.0,
+    "average_ms": 8.271972622270805,
+    "median_ms": 6,
+    "p95_ms": 18,
+    "p99_ms": 38,
+    "requests_per_second": 151.657896839173
+  },
+  "correctness": {
+    "users": 100,
+    "articles": 1000,
+    "likes": 5124,
+    "comments": 2211,
+    "negative_view_counts": 0,
+    "duplicate_likes": 0,
+    "orphan_comments": 0,
+    "passed": true
+  }
+}

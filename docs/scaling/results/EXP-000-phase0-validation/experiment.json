@@ -1,0 +1,12 @@
+{
+  "profile": "mixed",
+  "users": 5,
+  "spawn_rate": 5.0,
+  "run_time": "10s",
+  "host": "http://127.0.0.1:8000",
+  "article_min": 1,
+  "article_max": 1000,
+  "output": "docs/scaling/results/EXP-000-phase0-validation",
+  "database_url": "postgresql+psycopg://localhost/circlespace_lab",
+  "started_at": "2026-09-29T11:41:33.284448+00:00"
+}

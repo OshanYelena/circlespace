@@ -1,0 +1,12 @@
+{
+  "profile": "mixed",
+  "users": 10,
+  "spawn_rate": 5.0,
+  "run_time": "15s",
+  "host": "http://127.0.0.1:8000",
+  "article_min": 1,
+  "article_max": 1000,
+  "output": "docs/scaling/results/EXP-001-mixed-10vu",
+  "database_url": "postgresql+psycopg://localhost/circlespace_lab",
+  "started_at": "2026-09-29T11:39:04.437893+00:00"
+}

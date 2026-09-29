@@ -1,0 +1,12 @@
+{
+  "profile": "sustained",
+  "users": 10,
+  "spawn_rate": 5.0,
+  "run_time": "30s",
+  "host": "http://127.0.0.1:8000",
+  "article_min": 1,
+  "article_max": 1000,
+  "output": "docs/scaling/results/EXP-001-sustained-10vu",
+  "database_url": "postgresql+psycopg://localhost/circlespace_lab",
+  "started_at": "2026-09-29T11:37:09.388965+00:00"
+}
